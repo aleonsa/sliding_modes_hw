@@ -1,0 +1,42 @@
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore compiled Python files
+__pycache__/
+*.py[cod]
+
+# Ignore temporary files created by text editors
+*.swp
+*.swo
+*~
+
+# Ignore LaTeX auxiliary and intermediate files
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+
+# Ignore temporary files created by LaTeX editors
+*.dvi
+*.nav
+*.snm
+*.vrb
+
+# Ignore PDFs and other generated files
+# *.pdf
+*.ps
+# *.eps
+
+# Ignore backup files
+*.bak
+*.tmp
+
+# Ignore directories created by LaTeX compilers
+_build/

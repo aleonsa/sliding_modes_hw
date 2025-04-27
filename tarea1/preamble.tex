@@ -1,0 +1,75 @@
+\documentclass[letterpaper, 12pt]{extarticle}
+% \usepackage{fontspec}
+% ==================================================
+
+% document parameters
+% \usepackage[spanish, mexico, es-lcroman]{babel}
+\usepackage[spanish]{babel}
+\decimalpoint
+\usepackage[margin = 0.7in]{geometry}
+
+% ==================================================
+
+% Packages for math
+\usepackage{cancel} % Agregar en el preámbulo
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{physics}
+\usepackage{dsfont}
+\usepackage{esint}
+% ==================================================
+
+% Packages for writing
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+\usepackage{framed}
+\usepackage{csquotes}
+
+% ==================================================
+
+% Miscellaneous packages
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{multicol}
+\usepackage{subcaption}
+\usepackage{caption}
+\captionsetup{format = hang, margin = 10pt, font = small, labelfont = bf}
+
+\lstset{
+	language=Matlab,
+	basicstyle=\ttfamily\footnotesize,
+	keywordstyle=\color{blue},
+	commentstyle=\color{gray},
+	stringstyle=\color{red},
+	numbers=left,
+	numberstyle=\tiny,
+	stepnumber=1,
+	numbersep=5pt,
+	frame=single,
+	rulecolor=\color{black}
+}
+
+% Citation
+\usepackage[round, authoryear]{natbib}
+
+% Hyperlinks setup
+\usepackage{hyperref}
+\definecolor{links}{rgb}{0.36,0.54,0.66}
+\hypersetup{
+	colorlinks = true,
+	linkcolor = black,
+	urlcolor = blue,
+	citecolor = blue,
+	filecolor = blue,
+	pdfauthor = {Author},
+	pdftitle = {Title},
+	pdfsubject = {subject},
+	pdfkeywords = {one, two},
+	pdfproducer = {LaTeX},
+	pdfcreator = {pdfLaTeX},
+}

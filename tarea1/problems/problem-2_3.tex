@@ -1,0 +1,13 @@
+
+\begin{problem}{2.3}{problem2_3}
+Consider the DC-DC buck converter in Fig. 2.19 which belongs to the class of attenuation circuits; the corresponding dynamic equations are given by:
+$$
+	\begin{aligned}
+		L \frac{d i}{d t} & =-v+u V_{i n}  \\
+		C \frac{d v}{d t} & =i-\frac{v}{R}
+	\end{aligned}
+$$
+where $i$ is the current through the inductor $L, v$ is the voltage across the capacitor $C$, $V_{i n}$ is the input voltage, and $u \in\{0,1\}$ is the switching control signal. The goal is to stabilize the output voltage $v$ at the desired level $v_d$. This goal is to be achieved via stabilization of the inductor current $i$ at the desired level $i_d=\frac{v_d}{R}$ using sliding mode control, for this purpose:
+(a) Setting $\sigma=i-i_d$ and using the control input $u=\frac{1}{2}(1-\operatorname{sign}(\sigma))$, find the equivalent control and the sliding mode dynamics.
+(b) Considering $L=20 \mathrm{mH}, C=20 \mu \mathrm{~F}, R=30 \Omega$, $V_{i n}=15 \mathrm{~V}, v_d=10 \mathrm{~V}$, and the initial conditions $i(0)=0.1 \mathrm{~A}$ and $v(0)=5 \mathrm{~V}$, confirm the efficacy of the controller by simulations.
+\end{problem}

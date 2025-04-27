@@ -1,0 +1,259 @@
+\begin{problem}{2.1}{problem2_1}
+
+Consider the linear system
+\[
+	\begin{aligned}
+		\dot{x} & = Ax + Bu \\
+		\sigma  & = Gx
+	\end{aligned}
+\]
+with $\sigma$ as the sliding variable. Find the equivalente control $u_{\text{eq}}$ and the sliding mode equations when
+\begin{enumerate}
+	\item
+	      \[
+		      A = \begin{bmatrix}
+			      2 & 19 \\
+			      3 & 29
+		      \end{bmatrix}, \quad B = \begin{bmatrix}
+			      2 \\
+			      3
+		      \end{bmatrix}, \quad \text{and} \quad G = \begin{bmatrix}
+			      9 & 12
+		      \end{bmatrix}
+	      \]
+	\item
+	      \[
+		      A = \begin{bmatrix}
+			      1 & 1 & 1 \\
+			      0 & 1 & 3 \\
+			      1 & 0 & 1
+		      \end{bmatrix}, \quad B = \begin{bmatrix}
+			      3  & 9  \\
+			      1  & -2 \\
+			      -1 & 0
+		      \end{bmatrix}, \quad \text{and} \quad G = \begin{bmatrix}
+			      1 & 29 & 0 \\
+			      1 & 12 & 0
+		      \end{bmatrix}
+	      \]
+\end{enumerate}
+
+\end{problem}
+
+\begin{solution}{}{solution2_1}
+	\textbf{Finding the equivalent control \( u_{\text{eq}} \):}
+
+	The equivalent control \( u_{\text{eq}} \) is obtained by imposing that the sliding surface remains invariant, i.e., \( \dot{\sigma} = 0 \) on the sliding manifold.
+
+	\begin{enumerate}
+		\item First, differentiate \( \sigma \):
+		      \[
+			      \dot{\sigma} = G\dot{x}
+		      \]
+		      where \( G \) defines the sliding surface. Substituting the system dynamics \( \dot{x} = Ax + Bu \) yields:
+		      \[
+			      \dot{\sigma} = G(Ax + Bu) = GAx + GBu
+		      \]
+
+		\item On the sliding surface, we require \( \dot{\sigma} = 0 \), which gives:
+		      \[
+			      0 = GAx + GBu
+		      \]
+
+		\item Solving for \( u_{\text{eq}} \) leads to:
+		      \[
+			      GBu_{\text{eq}} = -GAx \quad \Rightarrow \quad u_{\text{eq}} = -(GB)^{-1}GAx
+		      \]
+		      assuming that \( GB \) is invertible.
+
+		\item Finally, substituting \( u = u_{\text{eq}} \) into \( \dot{x} = Ax + Bu \) provides the \textbf{sliding mode equations}.
+	\end{enumerate}
+
+	\bigskip
+
+	\textbf{Problem (a):}
+
+	\begin{enumerate}
+		\item Compute \( GA \), \( GB \), and \( (GB)^{-1} \):
+		      \[
+			      GA = \begin{bmatrix} 9 & 12 \end{bmatrix}
+			      \begin{bmatrix}
+				      3 & 19 \\
+				      3 & 29
+			      \end{bmatrix}
+			      = \begin{bmatrix}
+				      54 & 519
+			      \end{bmatrix}
+		      \]
+
+		      \[
+			      GB = \begin{bmatrix} 9 & 12 \end{bmatrix}
+			      \begin{bmatrix}
+				      2 \\ 3
+			      \end{bmatrix}
+			      = 54
+			      \quad \Rightarrow \quad (GB)^{-1} = \frac{1}{54}
+		      \]
+
+		\item Find \( u_{\text{eq}} \):
+		      \[
+			      \begin{aligned}
+				      u_{\text{eq}} & = -\frac{1}{54} \begin{bmatrix} 54 & 519 \end{bmatrix}
+				      \begin{bmatrix}
+					      x_1 \\ x_2
+				      \end{bmatrix}                                                         \\
+				                    & = -x_1 - \frac{519}{54} x_2
+			      \end{aligned}
+		      \]
+
+		\item Substitute \( u_{\text{eq}} \) into the system dynamics:
+		      \[
+			      \begin{aligned}
+				      \dot{x} & = Ax + Bu_{\text{eq}}                      \\
+				              & = \begin{bmatrix}
+					                  3 & 19 \\
+					                  3 & 29
+				                  \end{bmatrix}
+				      \begin{bmatrix}
+					      x_1 \\ x_2
+				      \end{bmatrix}
+				      + \begin{bmatrix}
+					        2 \\ 3
+				        \end{bmatrix}
+				      \left( -x_1 - \frac{519}{54}x_2 \right)              \\
+				              & = \begin{bmatrix}
+					                  2x_1 + 19x_2 - 2x_1 - 2\frac{519}{54}x_2 \\
+					                  3x_1 + 29x_2 - 3x_1 - 3\frac{519}{54}x_2
+				                  \end{bmatrix}
+			      \end{aligned}
+		      \]
+
+		      Therefore, the sliding mode dynamics are:
+		      \[
+			      \dot{x} = \begin{bmatrix}
+				      -0.222x_2 \\
+				      0.166x_2
+			      \end{bmatrix}
+		      \]
+	\end{enumerate}
+
+	\bigskip
+
+	\textbf{Problem (b):}
+
+	\begin{enumerate}
+		\item Compute \( GA \), \( GB \), and \( (GB)^{-1} \):
+		      \[
+			      GA = \begin{bmatrix}
+				      1 & 29 & 0 \\
+				      1 & 12 & 0
+			      \end{bmatrix}
+			      \begin{bmatrix}
+				      1 & 1 & 1 \\
+				      0 & 1 & 3 \\
+				      1 & 0 & 1
+			      \end{bmatrix}
+			      = \begin{bmatrix}
+				      1 & 30 & 88 \\
+				      1 & 13 & 37
+			      \end{bmatrix}
+		      \]
+
+		      \[
+			      GB = \begin{bmatrix}
+				      1 & 29 & 0 \\
+				      1 & 12 & 0
+			      \end{bmatrix}
+			      \begin{bmatrix}
+				      3  & 9  \\
+				      1  & -2 \\
+				      -1 & 0
+			      \end{bmatrix}
+			      = \begin{bmatrix}
+				      32 & -49 \\
+				      15 & -15
+			      \end{bmatrix}
+		      \]
+
+		      \[
+			      (GB)^{-1} = \frac{1}{255}
+			      \begin{bmatrix}
+				      -15 & 49 \\
+				      -15 & 32
+			      \end{bmatrix}
+		      \]
+
+		\item Find \( u_{\text{eq}} \):
+		      \[
+			      \begin{aligned}
+				      u_{\text{eq}} & = - (GB)^{-1} GAx \\
+				                    & = -\frac{1}{255}
+				      \begin{bmatrix}
+					      -15 & 49 \\
+					      -15 & 32
+				      \end{bmatrix}
+				      \begin{bmatrix}
+					      1 & 30 & 88 \\
+					      1 & 13 & 37
+				      \end{bmatrix}
+				      \begin{bmatrix}
+					      x_1 \\x_2\\x_3
+				      \end{bmatrix}                    \\
+				                    & = \frac{1}{15}
+				      \begin{bmatrix}
+					      -2 & -11 & -29 \\
+					      -1 & 2   & 8
+				      \end{bmatrix}
+				      \begin{bmatrix}
+					      x_1 \\x_2\\x_3
+				      \end{bmatrix}
+			      \end{aligned}
+		      \]
+
+		\item Substitute \( u_{\text{eq}} \) into the system dynamics:
+		      \[
+			      \begin{aligned}
+				      \dot{x} & = Ax + Bu_{\text{eq}} \\
+				              & = \begin{bmatrix}
+					                  1 & 1 & 1 \\
+					                  0 & 1 & 3 \\
+					                  1 & 0 & 1
+				                  \end{bmatrix}
+				      \begin{bmatrix}
+					      x_1 \\x_2\\x_3
+				      \end{bmatrix}
+				      + \frac{1}{15}
+				      \begin{bmatrix}
+					      3  & 9  \\
+					      1  & -2 \\
+					      -1 & 0
+				      \end{bmatrix}
+				      \begin{bmatrix}
+					      -2 & -11 & -29 \\
+					      -1 & 2   & 8
+				      \end{bmatrix}
+				      \begin{bmatrix}
+					      x_1 \\x_2\\x_3
+				      \end{bmatrix}                  \\
+				              & = \frac{1}{15}
+				      \begin{bmatrix}
+					      0  & 0  & 0  \\
+					      0  & 0  & 0  \\
+					      17 & 11 & 44
+				      \end{bmatrix}
+				      \begin{bmatrix}
+					      x_1 \\x_2\\x_3
+				      \end{bmatrix}
+			      \end{aligned}
+		      \]
+                Therefore, the sliding mode dynamics are:
+                \[
+                    \dot{x} = \begin{bmatrix}
+                        0 \\
+                        0 \\
+                        \frac{17}{15}x_1 + \frac{11}{15}x_2 + \frac{44}{15}x_3
+                    \end{bmatrix}
+                \]
+	\end{enumerate}
+
+\end{solution}
