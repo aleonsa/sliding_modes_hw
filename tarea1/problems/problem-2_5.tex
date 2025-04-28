@@ -1,0 +1,158 @@
+\begin{problem}{2.5}{problem2_5}
+Using the sliding variable $\sigma = x_1$ and the control $u = -\text{sign}(\sigma)$, find the sliding mode equation for the systems given below, by using the equivalent control method and Filippov method for the cases:
+
+\begin{itemize}
+	\item[(a)]
+		\begin{align*}
+			\dot{x}_1 & = u             \\
+			\dot{x}_2 & = (2u^2 - 1)x_2
+		\end{align*}
+	\item[(b)]
+		\begin{align*}
+			\dot{x}_1 & = u             \\
+			\dot{x}_2 & = (u - 2u^3)x_2
+		\end{align*}
+	\item[(c)]
+		\begin{align*}
+			\dot{x}_1 & = u             \\
+			\dot{x}_2 & = (u - 2u^2)x_2
+		\end{align*}
+\end{itemize}
+\end{problem}
+
+\begin{solution}{}{solution2_5}
+	\textbf{(a)}
+	\begin{enumerate}
+		\item \textbf{Equivalent control Method:}
+
+		      The sliding surface is defined as $\sigma = x_1$. In sliding mode, we require:
+		      \begin{align*}
+			      \sigma       & = 0, \\
+			      \dot{\sigma} & = 0.
+		      \end{align*}
+		      Since $\dot{\sigma} = \dot{x}_1 = u$, imposing $\dot{\sigma} = 0$ gives:
+		      \[
+			      u_{eq} = 0.
+		      \]
+
+		      Substituting $u_{eq} = 0$ into the second equation:
+		      \begin{align*}
+			      \dot{x}_2 & = (2(0)^2 - 1)x_2 \\
+			                & = -x_2.
+		      \end{align*}
+
+		      Thus, the sliding mode dynamics under the equivalent control method are:
+		      \[
+			      \dot{x}_2 = -x_2.
+		      \]
+		\item \textbf{Filippov Method:}
+
+		      The actual control law is $u = -\text{sign}(x_1)$, leading to discontinuities at $x_1 = 0$. To apply Filippov's method, we examine the system's behavior on both sides:
+
+		      \begin{itemize}
+			      \item If $x_1 > 0$, then $u = -1$.
+			      \item If $x_1 < 0$, then $u = +1$.
+		      \end{itemize}
+
+		      Substituting into the dynamics:
+		      \begin{itemize}
+			      \item For $u = -1$:
+			            \begin{align*}
+				            \dot{x}_1 & = -1,                  \\
+				            \dot{x}_2 & = (2(1) - 1)x_2 = x_2.
+			            \end{align*}
+
+			      \item For $u = +1$:
+			            \begin{align*}
+				            \dot{x}_1 & = 1,                   \\
+				            \dot{x}_2 & = (2(1) - 1)x_2 = x_2.
+			            \end{align*}
+		      \end{itemize}
+
+		      The Filippov convex combination requires choosing a mixture such that $\dot{x}_1 = 0$:
+		      \[
+			      (1-\alpha)(-1) + \alpha(1) = 0 \quad \Rightarrow \quad \alpha = \frac{1}{2}.
+		      \]
+
+		      Thus, the sliding dynamics for $x_2$ are:
+		      \[
+			      \dot{x}_2 = x_2.
+		      \]
+
+		\item \textbf{Final Results:}
+		      \begin{itemize}
+			      \item Equivalent Control Method: $\dot{x}_2 = -x_2$
+			      \item Filippov Method: $\dot{x}_2 = x_2$
+		      \end{itemize}
+	\end{enumerate}
+	\textbf{(b)}
+	\begin{enumerate}
+		\item \textbf{Equivalent control Method:}
+		      \[
+			      \dot{\sigma} = \dot{x}_1 = u = 0 \Rightarrow u_{eq} = 0.
+		      \]
+		      Substituting $u_{eq} = 0$:
+		      \begin{align*}
+			      \dot{x}_1 & = 0, \\
+			      \dot{x}_2 & = 0.
+		      \end{align*}
+		\item \textbf{Filippov Method:}
+		      \begin{itemize}
+			      \item For $u = -1$:
+			            \begin{align*}
+				            \dot{x}_1 & = -1, \\
+				            \dot{x}_2 & = x_2
+			            \end{align*}
+			      \item For $u = +1$:
+			            \begin{align*}
+				            \dot{x}_1 & = 1,   \\
+				            \dot{x}_2 & = -x_2
+			            \end{align*}
+		      \end{itemize}
+		      Then, is trivial to see that $\alpha = \frac{1}{2}$ again, so we have:
+		      \[
+			      \dot{x}_2 = (1-\alpha)(x_2) - \alpha x_2 = 0
+		      \]
+		\item \textbf{Final Results:}
+		      \begin{itemize}
+			      \item Equivalent Control Method: $\dot{x}_2 = 0$
+			      \item Filippov Method: $\dot{x}_2 = 0$
+		      \end{itemize}
+	\end{enumerate}
+	\textbf{(c)}
+	\begin{enumerate}
+		\item \textbf{Equivalent control Method:}
+		      \[
+			      \dot{\sigma} = \dot{x}_1 = u = 0 \Rightarrow u_{eq} = 0.
+		      \]
+		      Substituting $u_{eq} = 0$:
+		      \begin{align*}
+			      \dot{x}_1 & = 0, \\
+			      \dot{x}_2 & = 0.
+		      \end{align*}
+		\item \textbf{Filippov Method:}
+		      \begin{itemize}
+			      \item For $u = -1$:
+			            \begin{align*}
+				            \dot{x}_1 & = -1,    \\
+				            \dot{x}_2 & = -3 x_2
+			            \end{align*}
+			      \item For $u = +1$:
+			            \begin{align*}
+				            \dot{x}_1 & = 1,   \\
+				            \dot{x}_2 & = -x_2
+			            \end{align*}
+		      \end{itemize}
+		      Then, is trivial to see that $\alpha = \frac{1}{2}$ again, so we have:
+		      \[
+			      \dot{x}_2 = (1-\alpha)(-3x_2) - \alpha x_2 = -2x_2
+		      \]
+		\item \textbf{Final Results:}
+		      \begin{itemize}
+			      \item Equivalent Control Method: $\dot{x}_2 = 0$
+			      \item Filippov Method: $\dot{x}_2 = -2x_2$
+		      \end{itemize}
+	\end{enumerate}
+
+
+\end{solution}
